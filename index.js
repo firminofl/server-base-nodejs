@@ -1,21 +1,33 @@
 /**
- * Autor: Filipe Firmino Lemos
- * Data: 08/08/2019
- * Contato: filipefirmino@gec.inatel.br
+ * Autor: Filipe Firmino Lemos & Gustavo Henrique Rosa de Castro
+ * Data: 20/10/2019
+ * Contato: filipefirmino@gec.inatel.br & gustavohenrique@gec.inatel.br
  */
-const express = require('express');
-const cors = require('cors');
-const GlobalMessages = require('./controllers/GlobalMessages');
 
-//Iniciando o app
-const app = express();
-app.use(express.json());
-app.use(cors());
+//Importando a biblioteca do Restify
+const restify = require('restify');
 
-//Rota de inicializacao do servidor
-app.use('/', require("./routes/routes"));
+//Configurando servidor
+const server = restify.createServer({
+    name: 'TR1-EC021'
+});
 
-const PORT = 3001
-app.listen(PORT, () => {
-    console.log(`${GlobalMessages.SERVER_RUNNING}`)
-})
+//Definindo porta em que subiremos o servidor
+let port = process.env.PORT || 3001;
+
+/**
+ * Utilizando o bodyParser para
+ * converter o body da request em
+ * um jSON
+ * */
+server.use(restify.plugins.bodyParser());
+
+//Definindo endpoints (ou rotas) da minha aplicação.
+
+let routes = require("./routes/routes")
+routes.applyRoutes(server)
+
+//Subindo o servidor
+server.listen(port, function () {
+    console.log(`Servidor ${server.name} executando na porta ${port}`);
+});

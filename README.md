@@ -1,6 +1,6 @@
 # Server Base NodeJS
 ## Topics
-+ [General info](#summary)
++ [Summary](#summary)
 + [Technologies](#technologies)
 + [Setup](#setup)
 + [Contact](#contact)

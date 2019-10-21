@@ -1,4 +1,4 @@
-const PORT = 3000
+const PORT = 3002
 const Message = {
     SERVER_RUNNING: `Servidor executando na porta ${PORT}`
 }
