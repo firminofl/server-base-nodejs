@@ -1,7 +1,7 @@
 {
-  "name": "tr1-ec-021",
+  "name": "server-base-nodejs",
   "version": "1.0.0",
-  "description": "Project to validate EC021 second test (Advanced Topics)",
+  "description": "Server base in nodejs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,13 +10,11 @@
   "author": "Filipe Firmino Lemos",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
-    "jsonwebtoken": "^8.5.1",
-    "restify": "^8.4.0",
-    "restify-router": "^0.5.1"
+    "dotenv-safe": "^8.1.0",
+    "express": "^4.17.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/firminofl/TR1-ec-021.git"
+    "url": "https://github.com/firminofl/server-base-nodejs.git"
   }
 }

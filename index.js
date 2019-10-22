@@ -1,33 +1,23 @@
 /**
- * Autor: Filipe Firmino Lemos & Gustavo Henrique Rosa de Castro
- * Data: 20/10/2019
- * Contato: filipefirmino@gec.inatel.br & gustavohenrique@gec.inatel.br
+ * Autor: Filipe Firmino Lemos
+ * Data: 22/10/2019
+ * Contato: filipefirmino@gec.inatel.br
  */
 
-//Importando a biblioteca do Restify
-const restify = require('restify');
+const express = require('express');
+const GlobalMessages = require('./controllers/GlobalMessages');
+require("dotenv-safe").config()
 
-//Configurando servidor
-const server = restify.createServer({
-    name: 'TR1-EC021'
-});
+//Iniciando o app
+const app = express();
+app.use(express.json());
+
+//Rota de inicializacao do servidor
+app.use('/', require("./routes/routes"));
 
 //Definindo porta em que subiremos o servidor
-let port = process.env.PORT || 3001;
+let PORT = process.env.PORT || 3001;
 
-/**
- * Utilizando o bodyParser para
- * converter o body da request em
- * um jSON
- * */
-server.use(restify.plugins.bodyParser());
-
-//Definindo endpoints (ou rotas) da minha aplicação.
-
-let routes = require("./routes/routes")
-routes.applyRoutes(server)
-
-//Subindo o servidor
-server.listen(port, function () {
-    console.log(`Servidor ${server.name} executando na porta ${port}`);
-});
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`)
+}) 
